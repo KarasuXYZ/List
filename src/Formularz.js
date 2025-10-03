@@ -3,7 +3,7 @@ document.querySelector(".przycisk").addEventListener("click", function() {
     const validKeywords = ["Mietek", "proszę"]; 
 
     if (validKeywords.includes(inputValue)) {
-        window.open("https://www.google.com");
+        window.open("galeria.html");
     } else {
         alert("Nieprawidłowe hasło!"); 
     }
