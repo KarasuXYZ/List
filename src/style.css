@@ -48,6 +48,7 @@ body{
 .main:hover::before {
     opacity: 0.1;
     transform: rotate(45deg) translate(50%, 50%);
+    z-index: -1; /* Ensure shine is above other content */
 }
 
 .main > div {
