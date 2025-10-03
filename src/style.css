@@ -1,0 +1,95 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: url("../Photos/MietekD.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif; /* Optional: Set a clean font */
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Blur effect for glassy look */
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px; /* Add padding inside the main section */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 90%; /* Responsive width */
+    max-width: 400px; /* Limit width on larger screens */
+    justify-content: space-evenly; /* Evenly space objects */
+    font-size: 1.2rem; /* Increase font size */
+    position: relative; /* Required for the shine effect */
+    overflow: hidden; /* Prevent shine overflow */
+    transition: box-shadow 0.3s ease; /* Smooth transition for hover */
+}
+
+.main:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.main::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.main:hover::before {
+    opacity: 0.1;
+    transform: rotate(45deg) translate(50%, 50%);
+}
+
+.main > div {
+    margin-bottom: 0; /* Reset margin */
+    text-align: center; /* Center text */
+}
+
+button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for size */
+    font-size: 1rem; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth animation */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+button:hover {
+    transform: translateY(-2px); /* Float up by 2px */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Enhance shadow */
+}
+
+button:active {
+    transform: translateY(0); /* Reset position on click */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Reset shadow */
+}
+
+@media (max-width: 768px) {
+    body {
+        background: url("../Photos/MietekT.jpg") no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .main {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .main {
+        padding: 10px; /* Further adjust padding for very small screens */
+    }
+}

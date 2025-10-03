@@ -1,0 +1,125 @@
+/* Animated gradient background */
+:root { --glass: rgba(255,255,255,0.15); --glass-strong: rgba(255,255,255,0.25); }
+html,body{height:100%;margin:0;font-family:Arial, Helvetica, sans-serif; -webkit-font-smoothing:antialiased;}
+body{
+	display:flex;
+	align-items:flex-start;
+	justify-content:center;
+	padding:28px 12px;
+	background: linear-gradient(120deg,#ff9a9e 0%,#fad0c4 25%,#fbc2eb 50%,#a1c4fd 75%,#c2e9fb 100%);
+	background-size: 400% 400%;
+	animation: gradient 12s ease infinite;
+}
+@keyframes gradient {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
+}
+
+.container{
+	width:100%;
+	max-width:560px;
+	display:flex;
+	flex-direction:column;
+	gap:14px;
+}
+
+/* glassy card */
+.card{
+	display:block;
+	width:100%;
+	border-radius:14px;
+	overflow:hidden;
+	/* make the card itself transparent so no visible panel shows under the image */
+	background: transparent;
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+	/* keep subtle outline/shadow so cards still stand out */
+	box-shadow: 0 6px 18px rgba(10,10,10,0.12);
+	border: 1px solid rgba(255,255,255,0.04);
+	position: relative; /* ensure caption absolute positioning works */
+}
+
+/* ensure image fills card and respects rounding */
+.card img{
+	border-radius: 14px;
+	display:block;
+	width:100%;
+	height:160px;
+	object-fit:cover;
+	transition: transform .35s ease;
+}
+
+/* caption now overlays the bottom of the image with a subtle gradient,
+   no solid opaque box behind the text. smoother animation timing. */
+.caption{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 12px 14px;
+	color: #fff;
+	font-size: 1rem;
+	opacity: 0;
+	transform: translateY(10px);
+	transition: opacity 400ms cubic-bezier(.2,.8,.2,1), transform 400ms cubic-bezier(.2,.8,.2,1);
+	pointer-events: none;
+	/* gradient to help text legibility on light/dark photos */
+	background: linear-gradient(180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.45) 100%);
+	text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+/* expanded state - smoother reveal */
+.card.expanded{
+	transform: scale(1.01);
+	box-shadow: 0 14px 36px rgba(10,10,10,0.25);
+}
+.card.expanded img{
+	height: 320px;
+	transform: scale(1.03);
+}
+.card.expanded .caption{
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
+}
+
+/* animation origins for "rozszerzanie się z lewej/prawej/spodu" */
+.card.from-left{ transform-origin: left center; }
+.card.from-right{ transform-origin: right center; }
+.card.from-bottom{ transform-origin: center bottom; }
+
+/* small visual separator between inner elements (if any) */
+.card .meta{
+	padding:0 14px 14px;
+	color:rgba(255,255,255,0.9);
+	font-size:0.95rem;
+}
+
+/* CTA button at bottom */
+.footer {
+	display:flex;
+	justify-content:center;
+	margin-top:6px;
+	padding:18px 0 8px;
+}
+.cta{
+	background: linear-gradient(135deg,#6EE7B7,#3B82F6);
+	color:#fff;
+	border:0;
+	padding:12px 20px;
+	border-radius:999px;
+	font-size:1rem;
+	box-shadow: 0 8px 18px rgba(59,130,246,0.28);
+	cursor:pointer;
+	transition: transform .18s ease, box-shadow .18s ease;
+}
+.cta:hover{ transform: translateY(-2px); box-shadow: 0 12px 26px rgba(59,130,246,0.34); }
+.cta:active{ transform: translateY(0); }
+
+/* responsive tweaks for very small phones */
+@media (max-width:420px){
+	.card img{ height:140px; }
+	.card.expanded img{ height:260px; }
+	.caption{ font-size:0.98rem; padding:10px 12px; }
+}
