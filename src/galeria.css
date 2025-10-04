@@ -6,7 +6,7 @@ body{
 	align-items:flex-start;
 	justify-content:center;
 	padding:28px 12px;
-	background: linear-gradient(120deg,#ff9a9e 0%,#fad0c4 25%,#fbc2eb 50%,#a1c4fd 75%,#c2e9fb 100%);
+	background: linear-gradient(90deg,#ff9a9e 0%,#fad0c4 25%,#fbc2eb 50%,#a1c4fd 75%,#c2e9fb 100%);
 	background-size: 400% 400%;
 	animation: gradient 12s ease infinite;
 }

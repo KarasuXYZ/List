@@ -12,4 +12,13 @@ document.addEventListener('DOMContentLoaded', function () {
 			card.scrollIntoView({behavior:'smooth', block:'center'});
 		});
 	});
+
+	// CTA button: open index.html in a new tab (change URL if needed)
+	const cta = document.querySelector('.cta');
+	if (cta) {
+		cta.addEventListener('click', function () {
+			const newWin = window.open('List.html',);
+			if (newWin) newWin.opener = null;
+		});
+	}
 });
